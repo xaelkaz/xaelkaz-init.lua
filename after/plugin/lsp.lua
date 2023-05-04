@@ -3,9 +3,10 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'tsserver',
-  'rust_analyzer',
-  'ruby_ls',
+    'tsserver',
+    'rust_analyzer',
+    'ruby_ls',
+    'solargraph',
 })
 
 -- Fix Undefined global 'vim'
@@ -60,6 +61,14 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+require('lspconfig')['solargraph'].setup  { capabilities = capabilities }
+require('lspconfig')['ruby_ls'].setup { capabilities = capabilities }
+require('lspconfig')['rust_analyzer'].setup { capabilities = capabilities }
+require('lspconfig')['tsserver'].setup    { capabilities = capabilities }
+
+
 
 lsp.setup()
 

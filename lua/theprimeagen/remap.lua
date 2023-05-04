@@ -1,7 +1,5 @@
-
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
+vim.keymap.set("n", "<leader>pve", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -22,10 +20,10 @@ end)
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -49,3 +47,21 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
+-- (Exuberant/Universal) Ctags
+vim.opt.tags = '.tags'
+function RTags()
+    vim.cmd [[!ctags -f .tags --languages=ruby --exclude=.git -R .]]
+end
+
+vim.keymap.set("n", "rT", RTags)
+
+vim.g['test#strategy'] = "neovim"
+
+vim.keymap.set("n", "<leader>tn", vim.cmd.TestNearest, { desc = '[T]est [N]earest' })
+vim.keymap.set("n", "<leader>tf", vim.cmd.TestFile, { desc = '[T]est [F]ile' })
+vim.keymap.set("n", "<leader>ts", vim.cmd.TestSuite, { desc = '[T]est [S]uite' })
+vim.keymap.set("n", "<leader>tl", vim.cmd.TestLast, { desc = '[T]est [L]ast' })
+vim.keymap.set("n", "<leader>tv", vim.cmd.TestVisit, { desc = '[T]est [V]isit' })
+vim.keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>", { silent = true })
+vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>", { silent = true })
+vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { silent = true })

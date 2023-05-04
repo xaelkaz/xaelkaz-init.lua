@@ -6,4 +6,5 @@ vim.keymap.set('n', '<leader>ps', function()
 end)
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', 'gt', builtin.tags,            { desc = '[G]o to C[T]ags (telescope)', noremap = true })
 

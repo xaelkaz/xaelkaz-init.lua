@@ -71,6 +71,20 @@ return require('packer').startup(function(use)
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
+  use('weizheheng/ror.nvim')
+  use('vim-ruby/vim-ruby')
+  use('vim-test/vim-test')
+  use('tpope/vim-rails')
+
+  use {
+      'nvim-tree/nvim-tree.lua',
+      requires = {
+          'nvim-tree/nvim-web-devicons', -- optional
+      },
+      config = function()
+          require("nvim-tree").setup {}
+      end
+  }
 
 end)
 
