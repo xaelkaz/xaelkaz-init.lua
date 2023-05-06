@@ -97,5 +97,17 @@ return require('packer').startup(function(use)
           require'alpha'.setup(require'alpha.themes.dashboard'.config)
       end
   }
+  use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+  use {
+      "folke/which-key.nvim",
+      config = function()
+          vim.o.timeout = true
+          vim.o.timeoutlen = 300
+          require("which-key").setup {}
+      end
+  }
 end)
 
