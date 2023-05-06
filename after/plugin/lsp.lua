@@ -2,6 +2,8 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 lsp.ensure_installed({
     'tsserver',
     'rust_analyzer',
@@ -16,6 +18,17 @@ lsp.configure('lua-language-server', {
             diagnostics = {
                 globals = { 'vim' }
             }
+        }
+    }
+})
+
+-- Configure the Solargraph LSP settings
+lsp.configure('solargraph', {
+    settings = {
+        solargraph = {
+            diagnostics = true,
+            formatting = true,
+            completion = true,
         }
     }
 })
@@ -62,13 +75,10 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['solargraph'].setup  { capabilities = capabilities }
-require('lspconfig')['ruby_ls'].setup { capabilities = capabilities }
-require('lspconfig')['rust_analyzer'].setup { capabilities = capabilities }
-require('lspconfig')['tsserver'].setup    { capabilities = capabilities }
-
-
+-- Add the capabilities to the other language servers
+lsp.configure('tsserver', { capabilities = capabilities })
+lsp.configure('rust_analyzer', { capabilities = capabilities })
+lsp.configure('ruby_ls', { capabilities = capabilities })
 
 lsp.setup()
 

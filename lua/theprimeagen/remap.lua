@@ -65,3 +65,10 @@ vim.keymap.set("n", "<leader>tv", vim.cmd.TestVisit, { desc = '[T]est [V]isit' }
 vim.keymap.set("n", "<leader>nt", ":NvimTreeToggle<CR>", { silent = true })
 vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>", { silent = true })
 vim.keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { silent = true })
+
+vim.api.nvim_set_keymap('n', '<leader>ec', ':Econtroller<Space>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>em', ':Emodel<Space>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ev', ':Eview<Space>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>a', ':A<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>r', ':R<CR>', { noremap = true, silent = true })
+

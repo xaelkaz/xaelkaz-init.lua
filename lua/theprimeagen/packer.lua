@@ -75,6 +75,10 @@ return require('packer').startup(function(use)
   use('vim-ruby/vim-ruby')
   use('vim-test/vim-test')
   use('tpope/vim-rails')
+  use 'tpope/vim-projectionist'
+  use 'ngmy/vim-rubocop'
+  use 'tpope/vim-bundler'
+  use 'tpope/vim-endwise'
 
   use {
       'nvim-tree/nvim-tree.lua',
@@ -86,5 +90,12 @@ return require('packer').startup(function(use)
       end
   }
 
+  use {
+      'goolord/alpha-nvim',
+      requires = { 'nvim-tree/nvim-web-devicons' },
+      config = function ()
+          require'alpha'.setup(require'alpha.themes.startify'.config)
+      end
+  }
 end)
 
