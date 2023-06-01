@@ -97,10 +97,12 @@ return require('packer').startup(function(use)
           require'alpha'.setup(require'alpha.themes.dashboard'.config)
       end
   }
+
   use {
       'nvim-lualine/lualine.nvim',
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
+
   use {
       "folke/which-key.nvim",
       config = function()
@@ -109,5 +111,7 @@ return require('packer').startup(function(use)
           require("which-key").setup {}
       end
   }
-end)
 
+ use { 'christoomey/vim-tmux-navigator' }
+
+end)

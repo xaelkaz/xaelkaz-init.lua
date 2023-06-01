@@ -1,4 +1,6 @@
+local keymap = vim.keymap.set
 vim.g.mapleader = " "
+
 vim.keymap.set("n", "<leader>pve", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -72,3 +74,8 @@ vim.api.nvim_set_keymap('n', '<leader>ev', ':Eview<Space>', { noremap = true, si
 vim.api.nvim_set_keymap('n', '<leader>a', ':A<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>r', ':R<CR>', { noremap = true, silent = true })
 
+-- Tmux Navigator
+keymap("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", opts)
+keymap("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", opts)
+keymap("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", opts)
+keymap("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", opts)
